@@ -37,6 +37,7 @@ public class ParseCsv {
             switch (index) {
               case 0:
                 restaurantData.setRestId(Integer.parseInt(token.nextToken()));
+
                 index++;
                 break;
 
@@ -62,8 +63,9 @@ public class ParseCsv {
         }
 
       }
+      bufReader.close();
     } catch (FileNotFoundException e) {
-      System.out.println("File not found"+e.getMessage());
+      System.out.println("File not found" + e.getMessage());
     } catch (IOException e) {
       System.out.println("Error while reading file" + e.getMessage());
     }

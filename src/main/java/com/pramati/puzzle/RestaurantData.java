@@ -10,7 +10,7 @@ public class RestaurantData {
   private Float price;
   private String items;
 
-  
+
   public Integer getRestId() {
     return restId;
   }

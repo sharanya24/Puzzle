@@ -1,38 +1,41 @@
 package com.pramati.puzzle;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import java.io.FileNotFoundException;
 
 /**
  * Unit test for simple App.
  */
 public class AppTest 
-    extends TestCase
+    
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
+  String[] testArgs={"sample_data.csv","burger","tofu_log"};// test case 1
+  String[] testArgs1={"sample_data.csv", "chef_salad","wine_spritzer"};
+  String[] testArgs2={"sample_data.csv","fancy_european_water","extreme_fajita"};
+        
+    @org.junit.Test(expected=FileNotFoundException.class)
+    public void readFileTest(){
+     ParseCsv testParseCsv=new ParseCsv();
+     testParseCsv.readCsv("");
+  }
+    
+    @org.junit.Test
+    public void testOne(){
+     App.main(testArgs); 
+     
     }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    
+    @org.junit.Test
+    public void testTwo(){
+      App.main(testArgs1); 
     }
+    
+    @org.junit.Test
+    public void testThree(){
+      App.main(testArgs2); 
+    }
+    
+    
+    
+    
 }
