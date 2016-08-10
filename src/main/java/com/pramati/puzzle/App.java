@@ -32,6 +32,9 @@ public class App {
       for (int i = 1; i < args.length; i++) {
         itemtoSearch.add(new Item(args[i]));
       }
+      for(RestaurantData arr:list){
+        System.out.println(arr.toString());
+      }
 
       App app = new App();
       ResultRestaurantDetails resultRestaurantDetails = app.findRestaurants(itemtoSearch, list);
@@ -64,6 +67,7 @@ public class App {
         if (data.getItems().contains(items.getItemName())) {
           if (map.containsKey(data.getRestId())) {
             Float price = map.get(data.getRestId());
+         
             price += data.getPrice();
             map.put(data.getRestId(), price);
             int countVal = counter.get(data.getRestId());
@@ -83,9 +87,11 @@ public class App {
     Float minPrice = Float.MAX_VALUE;
     // find the Minprice restaurant
     for (Map.Entry<Integer, Float> entry : map.entrySet()) {
+      System.out.println(entry.getKey()+","+entry.getValue());
       for (Map.Entry<Integer, Integer> entry1 : counter.entrySet())
         if (entry.getKey().equals(entry1.getKey())) {
           if (entry1.getValue().equals(itemtoSearch.size()) && minPrice > entry.getValue()) {
+            minPrice=entry.getValue();
             resultRestaurantDetails.setPrice(entry.getValue());
             resultRestaurantDetails.setRestaurant(entry.getKey());
           }
